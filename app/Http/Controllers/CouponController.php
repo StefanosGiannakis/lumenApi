@@ -78,7 +78,15 @@ class CouponController extends Controller
 
     public function delete($id)
     {
-        Coupon::findOrFail($id)->delete();
-        return response('Deleted Successfully', 200);
+        $coupon = Coupon::find($id); 
+        
+        if($coupon){
+            $coupon->delete();
+            return response('Deleted Successfully', 200);
+        }
+        else
+            return response('Coupon Not Found', 404);
+
+
     }
 }
