@@ -52,10 +52,28 @@ class CouponController extends Controller
 
     public function update($id, Request $request)
     {
-        $coupon = Coupon::findOrFail($id);
-        $coupon->update($request->all());
 
-        return response()->json($coupon, 200);
+        $coupon = Coupon::find($id);
+
+        if($coupon){            
+            $coupon->name= $request->input('name');
+            $coupon->description= $request->input('description');
+            $coupon->isCoupon = $request->input('isCoupon');
+            $coupon->active = $request->input('active');
+            $coupon->productGroups= $request->input('productGroups');
+            $coupon->tags= $request->input('tags');
+            $coupon->isTake = $request->input('isTake');
+            $coupon->isDelivery= $request->input('isDelivery');
+            
+        
+            $coupon->save();
+
+            return response()->json($coupon, 200);
+        }
+        else 
+            return response()->json(["error"=>"Coupon Not Found !"]);
+        
+
     }
 
     public function delete($id)
