@@ -13,7 +13,11 @@ class CouponController extends Controller
 
     public function showOneCoupon($id)
     {
-        return response()->json(Coupon::find($id));
+        $coupon = Coupon::find($id);
+        if($coupon)
+            return response()->json($coupon);
+        else
+            return response(['error'=>'no coupon here']);
     }
 
     public function create(Request $request)
@@ -28,7 +32,7 @@ class CouponController extends Controller
             $isTake = $request->input('isTake');
             $isDelivery = $request->input('isDelivery');
 
-            $save = m_menu::create([
+            $save = Coupon::create([
                 'name'=> $name,
                 'description'=> $description,
                 'isCoupon'=> $isCoupon,
@@ -38,22 +42,12 @@ class CouponController extends Controller
                 'isTake'=> $isTake,
                 'isDelivery'=> $isDelivery,
             ]);
-            $res = "coupon is created";
+            $res = $save;
             return response($res, 200);
         } catch (\Illuminate\Database\QueryException $ex) {
             $res = "we had an error";
             return response($res, 500);
         }
-
-        //     "name"=> "Pizza and Choco",
-        //     "description"=> "Club Sandwich with Cola",
-        //     "isCoupon"=> 1,
-        //     "active"=> 0,
-        //     "productGroups"=> "\"Pizzas\", \"Nachos\"",
-        //     "tags"=> "\"Pizzas\", \"Cheese\" , \"Club Sandwich\"",
-        //     "isTake"=> 0,
-        //     "isDelivery"=> 1
-        // return response()->json($coupon, 201);
     }
 
     public function update($id, Request $request)

@@ -21,7 +21,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
   
     $router->get('coupons/{id}', ['uses' => 'CouponController@showOneCoupon']); // Done
   
-    $router->post('coupons', ['uses' => 'CouponController@create']);
+    $router->post('coupons/create', ['uses' => 'CouponController@create']);
   
     $router->put('coupons/{id}', ['uses' => 'CouponController@update']);
   
