@@ -16,7 +16,7 @@ $router->get('/', function () use ($router) {
 });
 
 
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->group(['prefix' => 'api','middleware'=>'auth'], function () use ($router) {
     $router->get('coupons',  ['uses' => 'CouponController@showAllCoupons']); // Done    
   
     $router->get('coupons/{id}', ['uses' => 'CouponController@showOneCoupon']); // Done
