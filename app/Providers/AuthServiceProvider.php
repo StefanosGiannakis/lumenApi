@@ -34,11 +34,14 @@ class AuthServiceProvider extends ServiceProvider
 
             $header=$request->header('token');
             // var_dump($request->header());
-            if(isset($header)){
-                echo "true";
+            // if(isset($header)){
+            //     echo "true";
+            //     return true;
+            // }
+            if ($header=="jdfbhgbhfghbuidofghbid") {
                 return true;
+                // return User::where('api_token', $request->input('api_token'))->first();
             }
-
             // echo "false";
             // if ($request->input('api_token')) {
                 
