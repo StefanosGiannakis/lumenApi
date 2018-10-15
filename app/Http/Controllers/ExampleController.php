@@ -14,5 +14,7 @@ class ExampleController extends Controller
         //
     }
 
-    //
+    public function loginPage(){
+        return view('login', ['name' => 'James']);
+    }
 }

@@ -11,11 +11,11 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+// $router->get('/', function () use ($router) {
+//     return $router->app->version();
+// });
 
-
+$router->get('/', ['uses' => 'ExampleController@loginPage']);
 $router->group(['prefix' => 'api','middleware'=>'auth'], function () use ($router) {
     $router->get('coupons',  ['uses' => 'CouponController@showAllCoupons']); // Done    
   

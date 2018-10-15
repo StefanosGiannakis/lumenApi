@@ -38,15 +38,14 @@ class AuthServiceProvider extends ServiceProvider
             //     echo "true";
             //     return true;
             // }
-            if ($header=="jdfbhgbhfghbuidofghbid") {
-                return true;
-                // return User::where('api_token', $request->input('api_token'))->first();
-            }
-            // echo "false";
-            // if ($request->input('api_token')) {
-                
-            //     return User::where('api_token', $request->input('api_token'))->first();
+            // if ($header=="jdfbhgbhfghbuidofghbid") {
+            //     return true;
+            //     // return User::where('api_token', $request->input('api_token'))->first();
             // }
+            // echo "false";
+            if ($request->input('token')=="jdfbhgbhfghbuidofghbid") {   
+                return User::where('token', $request->input('token'))->first();
+            }
         });
     }
 }
